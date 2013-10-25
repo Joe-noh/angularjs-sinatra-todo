@@ -1,0 +1,13 @@
+<doctype html>
+<html ng-app="TodoApp">
+  <head>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/todo_controller.js"></script>
+    <title>Todo</title>
+  </head>
+  <body ng-controller="TodoController">
+    <ul>
+      <li ng-repeat="todo in todos">{{todo.name}} is {{todo.age}} years old.</li>
+    </ul>
+ </body>
+</html>
