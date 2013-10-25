@@ -6,8 +6,16 @@ todoApp.config(function($httpProvider) {
 });
 
 todoApp.controller('TodoController', function TodoController($scope, $http) {
-  $http.get('/api/todo/1').success(function(data) {
-    $scope.todos = data;
-    console.log("ok", data);
-  });
+    $http.get('/api/todo/1').success(function(data) {
+	$scope.todos = data;
+	console.log("ok", data);
+    });
+
+    $scope.post = function() {
+	$http.post('/api/todo').success(function(data) {
+	    console.log("ok", data);
+	}).error(function (data) {
+	    console.log("error", data)
+	});
+    };
 });
