@@ -1,10 +1,6 @@
 <doctype html>
 <html ng-app="TodoApp">
   <head>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular/application.js"></script>
-    <script type="text/javascript" src="js/angular/controllers.js"></script>
-    <script type="text/javascript" src="js/gumby/gumby.min.js"></script>
     <link rel="stylesheet" href="css/gumby/gumby.css" />
     <title>Todo</title>
   </head>
@@ -19,5 +15,11 @@
     <form id="post-form" name="post-form" ng-model="todo" ng-submit="submitPost()" novalidate>
       <input type="text" name="body" ng-model="todo.body" required>
     </form>
+    <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/application.js"></script>
+    <script type="text/javascript" src="js/angular/controllers.js"></script>
+    <script type="text/javascript" src="js/gumby/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="js/gumby/gumby.min.js"></script>
  </body>
 </html>
