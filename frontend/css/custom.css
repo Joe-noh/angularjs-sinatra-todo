@@ -1,0 +1,36 @@
+
+#title {
+    text-align: center;
+}
+
+#search-box {
+    margin: 30px 30px;
+    text-align: center;
+}
+
+#todo-list {
+    text-align: center;
+}
+
+#new-form {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.todo-row {
+    padding: 5px 10px;
+    background: #cccccc;
+}
+
+.hey {
+    padding: 5px 10px;
+    background: #aacc66;
+}
+
+.done > span {
+    opacity: .3;
+}
+
+.undone > span {
+
+}

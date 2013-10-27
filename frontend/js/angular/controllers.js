@@ -7,9 +7,9 @@ todoApp.controller('TodoController', function TodoController($scope, $http) {
 	    params: $scope.todo
 	}).success(function(todo) {
 	    console.log("ok", todo);
+	    $scope.reload();
 	});
 	$scope.todo.body = ""
-	$scope.reload();
     };
 
     $scope.reload = function() {
@@ -19,11 +19,21 @@ todoApp.controller('TodoController', function TodoController($scope, $http) {
 	});
     }
 
-    $scope.deleteTodo = function(id) {
-	$http.delete('/api/todo/'+id).success(function(todos) {
+    $scope.deleteTodo = function(todo) {
+	$http.delete('/api/todo/'+todo.id).success(function(todos) {
 	    $scope.reload();
 	});
     };
 
-    $scope.reload();
+    $scope.toggleDone = function(todo) {
+	todo.done = !todo.done;
+	$http({
+	    method: 'PUT',
+	    url: '/api/todo/'+todo.id,
+	    params: todo
+	}).success(function() {
+	    $scope.reload();
+	});
+    };
+
 });

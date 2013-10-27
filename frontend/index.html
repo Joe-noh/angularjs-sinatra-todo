@@ -2,24 +2,35 @@
 <html ng-app="TodoApp">
   <head>
     <link rel="stylesheet" href="css/gumby/gumby.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+
     <title>Todo</title>
   </head>
-  <body ng-controller="TodoController">
+  <body ng-controller="TodoController" ng-init="reload()">
+    <h1 id="title">TODO</h1>
+    <div id="search-box" class="prepend field">
+      <span class="adjoined"><i class="icon-search"></i></span>
+      <input class="narrow text input" ng-model="todo"></input>
+    </div>
     <ul>
-      <li ng-repeat="todo in todos">
-	{{todo.body}}: {{todo.done}}
-	<button ng-click="deleteTodo(todo.id)">x</button>
+      <li id="todo-list" ng-repeat="todo in todos | filter:todo" ng-class="{done: todo.done, undone: !todo.done}">
+	<span class="append field">
+	  <input class="normal text input" ng-click="toggleDone(todo)"value="{{todo.body}}" readonly="readonly"></input>
+	  <div class="medium warning btn" ng-click="deleteTodo(todo)"><i class="icon-cancel"></i></div>
+	</span>
       </li>
     </ul>
 
-    <form id="post-form" name="post-form" ng-model="todo" ng-submit="submitPost()" novalidate>
-      <input type="text" name="body" ng-model="todo.body" required>
+    <form id="new-form" class="prepend field" ng-model="todo" ng-submit="submitPost()">
+      <span class="adjoined">New</span>
+      <input class="narrow text input" type="text" ng-model="todo.body" required>
     </form>
+
     <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script type="text/javascript" src="js/angular/application.js"></script>
     <script type="text/javascript" src="js/angular/controllers.js"></script>
     <script type="text/javascript" src="js/gumby/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="js/gumby/gumby.min.js"></script>
- </body>
+  </body>
 </html>
