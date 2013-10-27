@@ -2,14 +2,20 @@
 <html ng-app="TodoApp">
   <head>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular/todo_controller.js"></script>
+    <script type="text/javascript" src="js/angular/application.js"></script>
+    <script type="text/javascript" src="js/angular/controllers.js"></script>
     <title>Todo</title>
   </head>
   <body ng-controller="TodoController">
     <ul>
-      <li ng-repeat="todo in todos">{{todo.name}} is {{todo.age}} years old.</li>
+      <li ng-repeat="todo in todos">
+	{{todo.body}}: {{todo.done}}
+	<button ng-click="deleteTodo(todo.id)">x</button>
+      </li>
     </ul>
 
-    <button ng-click="post()" value="Post"></button>
+    <form id="post-form" name="post-form" ng-model="todo" ng-submit="submitPost()" novalidate>
+      <input type="text" name="body" ng-model="todo.body" required>
+    </form>
  </body>
 </html>

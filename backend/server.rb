@@ -27,13 +27,13 @@ class TodoAppBackend < Sinatra::Base
   end
 
   post '/api/todos' do
-    todo = Todo.new(params.slice :body, :done)
+    todo = Todo.new(params.slice :body)
     {message: todo.errors.collect(&:to_s)}.to_json unless todo.save
   end
 
   put '/api/todo/:id' do
     todo = Todo.get(params[:id])
-    {message: todo.errors.collect(&:to_s)}.to_json unless todo.update(params.slice :body, :done)
+    {message: todo.errors.map(&:to_s)}.to_json unless todo.update(params.slice :body, :done)
   end
 
   delete '/api/todo/:id' do
